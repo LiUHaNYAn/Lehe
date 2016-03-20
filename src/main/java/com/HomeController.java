@@ -34,7 +34,7 @@ public class HomeController {
     @ResponseBody
     public User Demo(HttpServletRequest request, HttpServletResponse response) {
         User user = new User();
-        user.setGender("男");
+        user.setGender("男   ");
         user.setUserName("james");
         return user;
     }
