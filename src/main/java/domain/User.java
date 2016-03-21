@@ -1,6 +1,7 @@
 package domain;
 
 
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -8,6 +9,8 @@ import javax.validation.constraints.Size;
 /**
  * Created by wanghy on 2016/3/18.
  */
+@Entity
+@Table
 public class User {
 
     public String getUserName() {
@@ -32,4 +35,15 @@ public class User {
     private String UserName;
     @NotNull
     private  String gender;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+@Id
+@GeneratedValue(strategy= GenerationType.AUTO)
+    private  int id;
 }

@@ -61,6 +61,10 @@
                 <prop key="show_sql">true</prop>
             </props>
         </property>
-   
+   <property name="annotatedClasses">
+        <list>
+            <value>domain.User</value>
+        </list>
+   </property>
     </bean>
 </beans>
