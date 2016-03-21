@@ -38,33 +38,5 @@
         <property name="suffix" value=".jsp"/>
         <property name="prefix" value="/views/"/>
     </bean>
- <bean id="datasource" class="org.apache.commons.dbcp.BasicDataSource">
-     <property name="url" value="jdbc:mysql://localhost:3306/test"/>
-     <property name="username" value="root"/>
-     <property name="password" value="123456"/>
-     <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-     <property name="initialSize" value="10"/>
-     <property name="maxActive" value="100"/>
-     <property name="maxIdle" value="5"/>
- </bean>
-    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
-        <property name="dataSource" ref="datasource"/>
-        <property name="hibernateProperties">
-            <props>
-                <prop key="c3p0.max_size">100</prop>
-                <prop key="c3p0.timeout">30000</prop>
-                <prop key="c3p0.min_size">5</prop>
-                <prop key="c3p0.max_statements">100</prop>
-                <prop key="dialect">org.hibernate.dialect.MySQL5Dialect</prop>
-                <prop key="connection.pool_size">100</prop>
-                <prop key="use_sql_comments">true</prop>
-                <prop key="show_sql">true</prop>
-            </props>
-        </property>
-   <property name="annotatedClasses">
-        <list>
-            <value>domain.User</value>
-        </list>
-   </property>
-    </bean>
+
 </beans>
