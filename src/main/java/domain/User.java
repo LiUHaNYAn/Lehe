@@ -1,8 +1,6 @@
 package domain;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+
 
 public class User {
 
@@ -23,10 +21,8 @@ public class User {
         this.gender = gender;
     }
 
-    @NotNull(message = "用户名不能为空")
-    @Size(min = 5,max = 30)
     private String UserName;
-    @NotNull
+
     private  String gender;
 
 

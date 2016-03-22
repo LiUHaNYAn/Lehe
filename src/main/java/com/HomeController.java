@@ -13,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
 
 /**
  * Created by wanghy on 2016/3/18.
@@ -49,7 +48,7 @@ public class HomeController {
     }
     @RequestMapping("entitydemo")
     @ResponseBody
-    public User EntityDemo(HttpServletRequest request, HttpServletResponse response, @Valid User user, BindingResult result, Errors errors) {
+    public User EntityDemo(HttpServletRequest request, HttpServletResponse response, User user, BindingResult result, Errors errors) {
         if(result.hasErrors()){
             user.setUserName(result.getAllErrors().get(0).getDefaultMessage());
 
