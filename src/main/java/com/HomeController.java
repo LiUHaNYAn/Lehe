@@ -1,7 +1,10 @@
 package com;
 
 
+import dao.UserDao;
+import data.IUserDao;
 import domain.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
@@ -19,6 +22,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Controller
 public class HomeController {
+    @Autowired
+    private  IUserDao userDao;
     @RequestMapping(value = {"index","/"},method = {RequestMethod.GET})
     public ModelAndView index() {
         User user = new User();
@@ -35,6 +40,7 @@ public class HomeController {
         User user = new User();
         user.setGender("男   ");
         user.setUserName("james");
+       userDao.WriteData();
         return user;
     }
 
