@@ -30,9 +30,16 @@ public class HomeController {
         User user=new User();
         user.setUserName("james");
         user.setGender("Man");
-        userService.Register(user.getUserName(),user.getGender());
         ModelAndView view = new ModelAndView("index");
-        view.addObject("user", user);
+        try{
+            view.addObject("user", user);
+            userService.Register(user.getUserName(),user.getGender());
+
+
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+
         return view;
     }
 
