@@ -1,8 +1,7 @@
 package com;
 
 
-import dao.UserDao;
-import data.IUserDao;
+import dao.IUserDao;
 import domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,12 +23,14 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 public class HomeController {
     @Autowired
-    private  IUserDao userDao;
+    private UserService userService;
     @RequestMapping(value = {"index","/"},method = {RequestMethod.GET})
-    public ModelAndView index() {
-        User user = new User();
-        user.setGender("男");
+    public ModelAndView index() throws Exception {
+
+        User user=new User();
         user.setUserName("james");
+        user.setGender("Man");
+        userService.Register(user.getUserName(),user.getGender());
         ModelAndView view = new ModelAndView("index");
         view.addObject("user", user);
         return view;
@@ -36,11 +38,15 @@ public class HomeController {
 
     @RequestMapping("demo")
     @ResponseBody
-    public User Demo(HttpServletRequest request, HttpServletResponse response) {
-        User user = new User();
-        user.setGender("男   ");
+    public User Demo(HttpServletRequest request, HttpServletResponse response)  {
+        User user=new User();
         user.setUserName("james");
-       userDao.WriteData();
+        user.setGender("Man");
+        try {
+            userService.Register(user.getUserName(),user.getGender());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return user;
     }
 

@@ -1,4 +1,4 @@
-package data;
+package dao;
 
 import domain.User;
 import org.hibernate.Session;
@@ -12,6 +12,6 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public interface IUserDao {
-    public    void  WriteData();
+    public    boolean  Register(String username,String gender);
 
 }
