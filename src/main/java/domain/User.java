@@ -2,8 +2,11 @@ package domain;
 
 
 import javax.persistence.*;
+import javax.validation.Constraint;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import java.sql.Timestamp;
+import java.util.Date;
 
 
 @Entity(name = "tb_user")
@@ -26,12 +29,13 @@ public class User {
         this.gender = gender;
     }
 
-    @NotNull
+
+    @Column(name = "username",nullable = false,length =30)
     private String UserName;
-    @NotNull
+    @Column(name = "gender",nullable = false,length = 4)
     private  String gender;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -41,7 +45,37 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private  int id;
+    private  long  id;
+
+    public java.util.Date getCreatetime() {
+        return createtime;
+    }
+
+    public void setCreatetime(Timestamp createtime) {
+        this.createtime = createtime;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    @Column(name = "createtime")
+    @Temporal(TemporalType.TIMESTAMP)
+    private java.util.Date createtime;
+
+    public String getTelphone() {
+        return telphone;
+    }
+
+    public void setTelphone(String telphone) {
+        this.telphone = telphone;
+    }
+
+    public void setCreatetime(Date createtime) {
+        this.createtime = createtime;
+    }
+
+    private  String telphone;
 
 
 }

@@ -67,6 +67,8 @@
                 <prop key="c3p0.timeout">10000</prop>
                 <prop key="format_sql">true</prop>
                 <prop key="use_sql_comments">true</prop>
+                <prop key="hibernate.format_sql">true</prop>
+                <prop key="show_sql">true</prop>
                 <prop key="hibernate.current_session_context_class">thread</prop>
             </props>
         </property>
