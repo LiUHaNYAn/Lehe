@@ -15,16 +15,13 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserDao userDao;
 
-    public void Register(String username, String password) throws Exception {
-        try{
+    public void Register(String username, String password)  throws Exception {
+
             if(userDao.Register(username,password)){
                 throw  new Exception("demo");
             }
-
             userDao.Register(username,password);
-        }catch (Exception ex){
-            throw  ex;
-        }
+
 
     }
 }
