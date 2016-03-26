@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * Created by wanghy on 2016/3/23.
  */
 @Component
-public interface IUserDao {
+public interface UserDao {
     public    boolean  Register(String username,String gender);
 
 }
