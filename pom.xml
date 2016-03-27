@@ -204,7 +204,11 @@
       <artifactId>hibernate-jpa-2.0-api</artifactId>
       <version>1.0.0.Final</version>
     </dependency>
-
+    <dependency>
+      <groupId>org.quartz-scheduler</groupId>
+      <artifactId>quartz-parent</artifactId>
+      <version>2.2.2</version>
+    </dependency>
     <!-- tomcat7.0.35 数据库连接池 -->
     <dependency>
       <groupId>org.apache.tomcat</groupId>
