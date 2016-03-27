@@ -42,7 +42,7 @@ public class UserAccountDaoImpl implements UserAccountDao {
         Session session = sessionFactory.getCurrentSession();
         Query query=session.createSQLQuery("select username,createtime,telphone  from useraccount as u where u.userid=:id").
                 setParameter("id", id);
-         List result=query.list();
+        //Transformers.aliasToBean(UserInfoViewModel.class)这个类必须有无参构造函数
         List<UserInfoViewModel> user = (List<UserInfoViewModel>) query.setResultTransformer(Transformers.aliasToBean(UserInfoViewModel.class)).list();
         if (user.size() == 0) {
             return null;

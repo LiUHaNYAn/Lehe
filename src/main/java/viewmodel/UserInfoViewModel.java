@@ -14,7 +14,7 @@ public class UserInfoViewModel {
         this.createtime = createtime;
         this.telphone = telphone;
     }
-
+    public UserInfoViewModel(){}
     public String getUsername() {
         return username;
     }
