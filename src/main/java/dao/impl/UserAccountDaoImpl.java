@@ -5,14 +5,10 @@ import domain.UserAccount;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.transform.AliasToBeanResultTransformer;
-import org.hibernate.transform.ResultTransformer;
 import org.hibernate.transform.Transformers;
-import org.jboss.marshalling.TraceInformation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cglib.core.Transformer;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
+
 import viewmodel.UserInfoViewModel;
 
 import java.util.List;
