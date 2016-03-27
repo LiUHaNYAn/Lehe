@@ -34,6 +34,7 @@ public class UserAccountController {
     @RequestMapping(value = {"/user/{id}"})
     @ResponseBody
     public UserInfoViewModel UserInfo(@PathVariable("id") int id){
+
         return  userAccountService.GetModel(id);
     }
 
