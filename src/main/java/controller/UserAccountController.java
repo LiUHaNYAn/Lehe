@@ -20,7 +20,7 @@ import java.util.Date;
 public class UserAccountController {
     @Autowired
     private UserAccountService userAccountService;
-    @RequestMapping(value = {"","index"})
+    @RequestMapping(value = {"/","index"})
     public ModelAndView Index(){
         UserAccount userAccount=new UserAccount();
         userAccount.setAccount(BigDecimal.valueOf(25.36));
@@ -29,7 +29,7 @@ public class UserAccountController {
         userAccount.setUsername("王海洋");
         userAccount.setTelphone("18631142824");
         userAccountService.Register(userAccount);
-        return  new ModelAndView();
+        return  new ModelAndView("index");
     }
     @RequestMapping(value = {"/user/{id}"})
     @ResponseBody
