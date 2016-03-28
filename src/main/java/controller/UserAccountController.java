@@ -45,8 +45,6 @@ public class UserAccountController {
     @ResponseBody
     public ResultModel UserRegister(RegisterDto dto){
         ResultModel resultModel=new ResultModel();
-
-
         try {
             userAccountService.Register(dto);
             resultModel.setResultcode(0);
