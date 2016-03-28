@@ -1,6 +1,10 @@
 package controller;
 
 import domain.UserAccount;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+import org.apache.log4j.helpers.LogLog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +24,7 @@ import java.util.Date;
 public class UserAccountController {
     @Autowired
     private UserAccountService userAccountService;
+    private  static Logger logger= LogManager.getLogger(UserAccountController.class.getName());
     @RequestMapping(value = {"/","index"})
     public ModelAndView Index(){
         UserAccount userAccount=new UserAccount();
@@ -29,6 +34,11 @@ public class UserAccountController {
         userAccount.setUsername("王海洋");
         userAccount.setTelphone("18631142824");
         userAccountService.Register(userAccount);
+        logger.debug("this is a debug out put");
+        logger.info("this is a debug out put");
+        logger.error("未处理的异常");
+        logger.error("未处理的异常");
+        logger.debug("this is a debug out put");
         return  new ModelAndView("index");
     }
     @RequestMapping(value = {"/user/{id}"})
