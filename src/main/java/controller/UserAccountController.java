@@ -43,7 +43,7 @@ public class UserAccountController {
     }
     @RequestMapping(value = {"/user/register"},method = RequestMethod.POST)
     @ResponseBody
-    public ResultModel UserRegister(@NotNull @Valid RegisterDto dto){
+    public ResultModel UserRegister(RegisterDto dto){
         ResultModel resultModel=new ResultModel();
 
 
