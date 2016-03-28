@@ -72,60 +72,49 @@
         var validate=  $("#form1").validate({
             rules:{
                 username:{
-                    required:true
-                    ,
-                    minlength:3,
-                    maxlength:20
+                    required:true,
+                    rangelength:[3,20]
                 },
                 password:{
                     required:true,
-                    minlength:6,
-                    maxlength:20
+                    rangelength:[6,20]
                 },
                 confirmpassword:{
                     required:true,
-                    minlength:6,
-                    maxlength:20,
+                    rangelength:[6,20],
                     equalTo:"#password"
                 },
                 checkcode:{
                     required:true,
-                    minlength:4,
-                    maxlength:4,
+                    rangelength:[4,4]
                 },telphone:{
                     required:true,
-                    minlength:11,
-                    maxlength:11,
+                    rangelength:[4,4]
                 }
             },
             messages:
             {
                 username:{
                     required:"请输入用户名"  ,
-                    minlength:"用户名长度3-20",
-                    maxlength:"用户名长度3-20"
+                    rangelength:"用户名长度{0}-{1}"
                 }
                 ,
                 password:{
                     required:"请输入密码",
-                    minlength:"密码长度6-20",
-                    maxlength:"密码长度6-20"
+                    rangelength:"密码长度{0}-{1}"
                 },
                 confirmpassword:{
                     required:"请输入确认密码",
-                    minlength:"密码长度6-20",
-                    maxlength:"密码长度6-20",
+                    rangelength:"密码长度{0}-{1}",
                     equalTo:"密码输入不一致"
                 },
                 checkcode:{
                     required:"请输入验证码",
-                    minlength:"验证码长度4",
-                    maxlength:"用户名长度4"
+                    rangelength: "验证码长度4"
                 },
                 telphone:{
                     required:"请输入手机号码",
-                    minlength:"手机号长度11位",
-                    maxlength:"手机号长度11位"
+                    rangelength:"手机号长度11位"
                 }
             }});
         if(!validate.form()){
@@ -133,7 +122,6 @@
             alert("请输入完整信息");
             return;
         }
-
         var dto={
             username:$("#username").val(),
             password:$("#password").val(),
