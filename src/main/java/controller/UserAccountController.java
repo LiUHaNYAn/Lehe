@@ -35,8 +35,6 @@ public class UserAccountController {
         userAccount.setTelphone("18631142824");
         userAccountService.Register(userAccount);
         logger.debug("this is a debug out put");
-        logger.info("this is a debug out put");
-        logger.error("未处理的异常");
         logger.error("未处理的异常");
         logger.debug("this is a debug out put");
         return  new ModelAndView("index");
