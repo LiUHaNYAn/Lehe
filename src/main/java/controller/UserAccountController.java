@@ -54,8 +54,9 @@ public class UserAccountController {
             userAccountService.Register(dto);
             resultModel.setResultcode(0);
         } catch (Exception e) {
+            e.printStackTrace();
             resultModel.setResultcode(-1);
-            resultModel.setMsg(e.getMessage());
+            resultModel.setMsg(e.getLocalizedMessage());
         }
         return  resultModel;
     }

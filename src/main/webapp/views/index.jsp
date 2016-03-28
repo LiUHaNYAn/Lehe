@@ -11,11 +11,9 @@
     <title>this is the demo title</title>
 
 </head>
-<script src="/statics/jquery.min-1.10.js" type="text/javascript"/>
+<script src="/statics/jquery.min-1.10.js" type="text/javascript"></script>
 <body>
 <script type="text/javascript">
-    console.log("this is a demo")
-    alert("this is a demo");
 $(function(){
     register();
 });
