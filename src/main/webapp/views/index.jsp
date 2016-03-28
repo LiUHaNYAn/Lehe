@@ -14,40 +14,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content=""><title>this is the demo title</title>
+    <style>
+        .error{
+            color: red;
+        }
+
+    </style>
 </head>
 <link type="text/css" href="/statics/css/bootstrap.css"  rel="stylesheet">
 <link type="text/css" href="/statics/css/bootstrap-theme.css"  rel="stylesheet">
 <script src="/statics/js/jquery.min-1.10.js" type="text/javascript"></script>
+<script src="/statics/js/jquery.validate.min.js" type="text/javascript"></script>
 <div class="container">
-    <form class="form-horizontal">
+    <form class="form-horizontal" id="form1">
         <div class="form-group">
             <label for="username" class="col-sm-2 control-label">用户名</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="username" placeholder="请输入用户名">
+                <input type="text" class="form-control" name="username" id="username" placeholder="请输入用户名">
             </div>
         </div>
         <div class="form-group">
             <label for="password" class="col-sm-2 control-label">密码</label>
             <div class="col-sm-10">
-                <input type="password" class="form-control" id="password" placeholder="请输入密码">
+                <input type="password" class="form-control" name="password" id="password" placeholder="请输入密码">
             </div>
         </div>
         <div class="form-group">
             <label for="confirmpassword" class="col-sm-2 control-label">确认密码</label>
             <div class="col-sm-10">
-                <input type="password" class="form-control" id="confirmpassword" placeholder="请输入确认密码">
+                <input type="password" class="form-control" name="confirmpassword" id="confirmpassword" placeholder="请输入确认密码">
             </div>
         </div>
         <div class="form-group">
             <label for="telphone" class="col-sm-2 control-label">联系方式</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="telphone" placeholder="请输入手机号码">
+                <input type="text" class="form-control" id="telphone" name="telphone" placeholder="请输入手机号码">
             </div>
         </div>
         <div class="form-group">
             <label for="checkcode" class="col-sm-2 control-label">验证码</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="checkcode" placeholder="请输入验证码">
+                <input type="text" class="form-control" id="checkcode" name="checkcode" placeholder="请输入验证码">
             </div>
         </div>
         <div class="form-group">
@@ -62,6 +69,71 @@
 <script type="text/javascript">
 
     function register(){
+        var validate=  $("#form1").validate({
+            rules:{
+                username:{
+                    required:true
+                    ,
+                    minlength:3,
+                    maxlength:20
+                },
+                password:{
+                    required:true,
+                    minlength:6,
+                    maxlength:20
+                },
+                confirmpassword:{
+                    required:true,
+                    minlength:6,
+                    maxlength:20,
+                    equalTo:"#password"
+                },
+                checkcode:{
+                    required:true,
+                    minlength:4,
+                    maxlength:4,
+                },telphone:{
+                    required:true,
+                    minlength:11,
+                    maxlength:11,
+                }
+            },
+            messages:
+            {
+                username:{
+                    required:"请输入用户名"  ,
+                    minlength:"用户名长度3-20",
+                    maxlength:"用户名长度3-20"
+                }
+                ,
+                password:{
+                    required:"请输入密码",
+                    minlength:"密码长度6-20",
+                    maxlength:"密码长度6-20"
+                },
+                confirmpassword:{
+                    required:"请输入确认密码",
+                    minlength:"密码长度6-20",
+                    maxlength:"密码长度6-20",
+                    equalTo:"密码输入不一致"
+                },
+                checkcode:{
+                    required:"请输入验证码",
+                    minlength:"验证码长度4",
+                    maxlength:"用户名长度4"
+                },
+                telphone:{
+                    required:"请输入手机号码",
+                    minlength:"手机号长度11位",
+                    maxlength:"手机号长度11位"
+                }
+            }});
+        if(!validate.form()){
+            validate
+            alert("请输入完整信息");
+            return;
+        }
+
         var dto={
             username:$("#username").val(),
             password:$("#password").val(),
@@ -69,6 +141,7 @@
             checkcode:$("#checkcode").val(),
             telphone:$("#telphone").val()
         };
+        console.log(str);
         $.ajax({
             url:"/user/register",
             data:dto,
@@ -77,6 +150,7 @@
                 console.log(data);
             }
         });
+
     }
 </script>
 </body>
