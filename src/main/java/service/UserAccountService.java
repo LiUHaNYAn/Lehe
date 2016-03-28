@@ -1,6 +1,7 @@
 package service;
 
 import domain.UserAccount;
+import dtomodel.RegisterDto;
 import org.hibernate.bytecode.spi.NotInstrumentedException;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,6 @@ import javax.xml.ws.ServiceMode;
  */
 @Transactional(propagation = Propagation.REQUIRED,rollbackFor = {Exception.class, NotInstrumentedException.class})
 public interface UserAccountService {
-    public  void  Register(UserAccount userAccount) ;
+    public  void  Register(RegisterDto userAccount) throws Exception;
     public UserInfoViewModel GetModel(int id);
 }

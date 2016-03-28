@@ -2,6 +2,7 @@ package dao.impl;
 
 import dao.UserAccountDao;
 import domain.UserAccount;
+import dtomodel.RegisterDto;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
