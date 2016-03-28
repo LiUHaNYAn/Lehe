@@ -9,6 +9,7 @@ import org.apache.log4j.PropertyConfigurator;
 import org.apache.log4j.helpers.LogLog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,13 +43,9 @@ public class UserAccountController {
     }
     @RequestMapping(value = {"/user/register"},method = RequestMethod.POST)
     @ResponseBody
-    public ResultModel UserRegister(@NotNull @Valid RegisterDto dto, Errors errors){
+    public ResultModel UserRegister(@NotNull @Valid RegisterDto dto){
         ResultModel resultModel=new ResultModel();
-        if(errors.hasErrors()){
-            resultModel.setResultcode(-1);
-            resultModel.setMsg(errors.getObjectName());
-            return  resultModel;
-        }
+
 
         try {
             userAccountService.Register(dto);

@@ -19,7 +19,7 @@ $(function(){
 });
     function register(){
         var dto={
-            username:"18503292896",
+
             password:"123456789",
             confirmpassword:"123456789",
             checkcode:"123456",

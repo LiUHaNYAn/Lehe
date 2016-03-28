@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import service.UserAccountService;
 import viewmodel.UserInfoViewModel;
 
+import javax.validation.Valid;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -21,7 +22,7 @@ public class UserAccountServiceImpl implements UserAccountService {
     @Autowired
     private UserAccountDao userDao;
     private    Logger logger= LogManager.getLogger(getClass().getName());
-    public void Register(RegisterDto userAccount) throws Exception {
+    public void Register(@Valid RegisterDto userAccount) throws Exception {
         if(userDao.GetModel(userAccount.getUsername())!=null){
            logger.warn(String.format("手机号码%s已经注册",userAccount.getUsername()));
             throw  new Exception("该手机号码已经注册");
