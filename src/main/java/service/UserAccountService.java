@@ -10,6 +10,9 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import viewmodel.UserInfoViewModel;
 
+import javax.validation.Valid;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import javax.xml.ws.ServiceMode;
 
 /**
@@ -17,6 +20,6 @@ import javax.xml.ws.ServiceMode;
  */
 @Transactional(propagation = Propagation.REQUIRED,rollbackFor = {Exception.class, NotInstrumentedException.class})
 public interface UserAccountService {
-    public  void  Register(RegisterDto userAccount) throws Exception;
-    public UserInfoViewModel GetModel(int id);
+    public  void  Register(@Valid @NotNull RegisterDto userAccount) throws Exception;
+    public UserInfoViewModel GetModel(@Min(value = 1L,message = "请输入一个大于0的整数") int id);
 }

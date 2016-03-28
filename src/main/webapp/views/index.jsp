@@ -131,6 +131,7 @@
         $.ajax({
             url:"/user/register",
             data:dto,
+            dataType:"application/json",
             type:"post",
             success:function(data){
                 console.log(data);

@@ -39,10 +39,10 @@ public class UserAccountServiceImpl implements UserAccountService {
 
     public UserInfoViewModel GetModel(int id) {
          UserInfoViewModel userInfoViewModel=  userDao.GetModel(id);
-        if(userInfoViewModel==null){
-            logger.warn(String.format("编号为%d的用户不存在",id));
-        }
-        logger.info(String.format("编号为%d的用户存在",id));
+//        if(userInfoViewModel==null){
+//            logger.warn(String.format("编号为%d的用户不存在",id));
+//        }
+//        logger.info(String.format("编号为%d的用户存在",id));
         return userInfoViewModel;
     }
 }
