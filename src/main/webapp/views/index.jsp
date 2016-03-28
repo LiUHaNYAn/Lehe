@@ -89,7 +89,7 @@
                     rangelength:[4,4]
                 },telphone:{
                     required:true,
-                    rangelength:[4,4]
+                    rangelength:[11,11]
                 }
             },
             messages:
@@ -118,7 +118,6 @@
                 }
             }});
         if(!validate.form()){
-            validate
             alert("请输入完整信息");
             return;
         }
@@ -129,7 +128,6 @@
             checkcode:$("#checkcode").val(),
             telphone:$("#telphone").val()
         };
-        console.log(str);
         $.ajax({
             url:"/user/register",
             data:dto,
