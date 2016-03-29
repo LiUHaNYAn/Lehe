@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by wanghy on 2016/3/29.
  */
-public abstract    class implbase<T> implements IDao<T> {
+public abstract    class ImplBase<T> implements IDao<T> {
     @Autowired
     private SessionFactory sessionFactory;
 
