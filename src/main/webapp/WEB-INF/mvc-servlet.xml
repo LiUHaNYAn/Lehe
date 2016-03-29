@@ -19,6 +19,7 @@
     </bean>
     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+
         <property name="messageConverters">
             <list>
                 <bean class="org.springframework.http.converter.StringHttpMessageConverter">
