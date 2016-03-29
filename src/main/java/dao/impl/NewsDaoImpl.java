@@ -8,24 +8,6 @@ import java.util.List;
 /**
  * Created by wanghy on 2016/3/29.
  */
-public class NewsDaoImpl implements NewsDao {
-    public void AddEntity(News entity) {
+public class NewsDaoImpl extends implbase<News>   implements NewsDao  {
 
-    }
-
-    public void UpdateEntity(News entity) {
-
-    }
-
-    public boolean DeleteEntity(News entity) {
-        return false;
-    }
-
-    public List<News> GetList(String hql) {
-        return null;
-    }
-
-    public List<News> Pager(String hql, int pageindex, int pagesize) {
-        return null;
-    }
 }
