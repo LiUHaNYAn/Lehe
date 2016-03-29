@@ -86,7 +86,7 @@
                             <a class="J_menuItem" href="index_v4.html">主页示例四</a>
                         </li>
                         <li>
-                            <a href="index_v5.html" target="_blank">主页示例五</a>
+                            <a href="index_v5.html" class="J_menuItem">主页示例五</a>
                         </li>
                     </ul>
                 </li>
