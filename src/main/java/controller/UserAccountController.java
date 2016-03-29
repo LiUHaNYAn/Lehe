@@ -25,10 +25,11 @@ import java.util.Date;
  * Created by wanghy on 2016/3/26.
  */
 @Controller
+@RequestMapping("/user")
 public class UserAccountController {
     @Autowired
     private UserAccountService userAccountService;
-    @RequestMapping(value = {"/","index"})
+    @RequestMapping(value = {"","index"})
     public ModelAndView Index(){
         return  new ModelAndView("index");
     }
