@@ -1,4 +1,4 @@
-package domain;
+package domain.entity;
 
 import javax.persistence.*;
 import java.math.BigDecimal;

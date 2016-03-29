@@ -1,7 +1,7 @@
 package service.impl;
 
 import dao.UserAccountDao;
-import domain.UserAccount;
+import domain.entity.UserAccount;
 import dtomodel.RegisterDto;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;

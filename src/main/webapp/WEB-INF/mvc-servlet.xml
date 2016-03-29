@@ -60,7 +60,9 @@
         <property name="dataSource" ref="dataSource"/>
         <property name="annotatedClasses">
             <list>
-                <value>domain.UserAccount</value>
+                <value>domain.entity.UserAccount</value>
+                <value>domain.entity.NewsClass</value>
+                <value>domain.entity.News</value>
             </list>
         </property>
         <property name="hibernateProperties">

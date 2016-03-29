@@ -1,7 +1,6 @@
 package dao;
 
-import domain.UserAccount;
-import dtomodel.RegisterDto;
+import domain.entity.UserAccount;
 import viewmodel.UserInfoViewModel;
 
 import javax.validation.Valid;
