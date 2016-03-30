@@ -1,4 +1,4 @@
-@import url("http://fonts.useso.com/css?family=Open+Sans:300,400,600,700&amp;lang=en");
+@import /static/css/css.css;
 
 h1, h2, h3, h4, h5, h6 {
     font-weight: 100;
@@ -177,7 +177,7 @@ body.body-small .navbar-top-links li:last-child {
 
 .nav-header {
     padding: 33px 25px;
-    background: url("patterns/header-profile.png") no-repeat;
+    background: url("/statics/img/header-profile.png") no-repeat;
 }
 
 .pace-done .nav-header {

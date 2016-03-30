@@ -34,5 +34,4 @@ public abstract    class ImplBase<T extends IEntity> implements IDao<T> {
     public List<T> Pager(String hql, int pageindex, int pagesize) {
         return (List<T>)sessionFactory.getCurrentSession().createQuery(hql).setFirstResult(pagesize*(pageindex-1)+1).setMaxResults(pageindex*pagesize);
     }
-    public  abstract  T GetModel(int id);
 }
