@@ -10,12 +10,7 @@ import java.util.Date;
  */
 @Entity(name = "tb_newsclass")
 public class NewsClass implements IEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "classid")
-    private  int classid;
-    @Column(name = "classname",nullable = false,length = 20)
-    private  String name;
+
 
     public Date getCreatetime() {
         return createtime;
@@ -84,4 +79,10 @@ public class NewsClass implements IEntity {
     private  int language;
     @Column(name = "ishome",nullable = false)
     private  int ishome;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "classid")
+    private  int classid;
+    @Column(name = "classname",nullable = false,length = 20)
+    private  String name;
 }

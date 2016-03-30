@@ -1,17 +1,22 @@
 package service;
 
+import common.ResultModel;
 import domain.entity.NewsClass;
+import dtomodel.NewsClassAddDto;
+import org.springframework.validation.BindingResult;
 
 import javax.transaction.Transactional;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 /**
  * Created by admin on 2016/3/30.
  */
 public interface NewsClassService {
     @Transactional
-    void  AddNewsClass(NewsClass newsClass);
+    ResultModel AddNewsClass(@Valid @NotNull NewsClassAddDto newsClass, BindingResult result);
     @Transactional
-    void  UpdateNewsClass(NewsClass newsClass);
+    ResultModel  UpdateNewsClass(NewsClass newsClass);
     @Transactional
-    void  DeleteNewsClass(int newsclassid);
+    ResultModel  DeleteNewsClass(int newsclassid);
 }
