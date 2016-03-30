@@ -16,6 +16,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by admin on 2016/3/30.
@@ -92,5 +93,16 @@ public class NewsClassServiceImpl implements NewsClassService {
         resultModel.setResultcode(1);
         resultModel.setData(newsClass);
         return  resultModel;
+    }
+
+    public ResultModel GetList( int pageindex, int pagesize, String name) {
+     List<NewsClass> newsclass=(List<NewsClass>)newsClassDao.Query("from domain.entity.NewsClass")
+//             .setParameter("name",name)
+             .setFirstResult((pageindex-1)*pagesize)
+             .setMaxResults(pageindex*pagesize).list();
+        ResultModel resultmodel=new ResultModel();
+        resultmodel.setResultcode(1);
+        resultmodel.setData(newsclass);
+        return  resultmodel;
     }
 }

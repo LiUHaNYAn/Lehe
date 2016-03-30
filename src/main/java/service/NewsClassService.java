@@ -22,5 +22,8 @@ public interface NewsClassService {
     ResultModel  UpdateNewsClass(NewsClassUpdateDto newsClassUpdateDto,BindingResult result);
     @Transactional
     ResultModel  DeleteNewsClass(int newsclassid);
+    @Transactional
     public  ResultModel GetModel(int id,BindingResult bindingResult);
+    @Transactional
+    public  ResultModel GetList(int pageindex,int pagesize,String classname);
 }

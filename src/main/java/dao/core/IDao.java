@@ -1,5 +1,8 @@
 package dao.core;
 
+import org.hibernate.Query;
+import org.hibernate.SQLQuery;
+
 import java.util.List;
 
 /**
@@ -10,5 +13,7 @@ public interface IDao<T> {
     public  void  UpdateEntity(T entity);
     public void   DeleteEntity(T entity);
     public List<T> GetList(String hql);
+    public Query Query(String hql);
+    public SQLQuery SQLQuery(String sql);
     public List<T> Pager(String hql,int pageindex,int pagesize);
 }

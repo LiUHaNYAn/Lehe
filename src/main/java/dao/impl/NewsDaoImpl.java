@@ -17,4 +17,5 @@ public class NewsDaoImpl extends ImplBase<News> implements NewsDao  {
     public void DeleteNews(int id) {
         sessionFactory.getCurrentSession().createQuery("delete from News where newsid=:newsid").setParameter("newsid",id);
     }
+
 }
