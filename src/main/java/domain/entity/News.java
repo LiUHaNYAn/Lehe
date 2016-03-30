@@ -34,8 +34,8 @@ public class News {
     public void setNewsClass(NewsClass newsClass) {
         this.newsClass = newsClass;
     }
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.DETACH},fetch = FetchType.LAZY)
-    @JoinColumn(name = "classid")
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+//    @JoinColumn(name = "classid",referencedColumnName = "classid")
     private NewsClass newsClass;
     public int getNewsid() {
         return newsid;
