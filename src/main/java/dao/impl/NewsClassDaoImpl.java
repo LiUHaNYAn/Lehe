@@ -3,10 +3,12 @@ package dao.impl;
 import dao.NewsClassDao;
 import domain.entity.News;
 import domain.entity.NewsClass;
+import org.springframework.stereotype.Repository;
 
 /**
  * Created by wanghy on 2016/3/29.
  */
+@Repository
 public class NewsClassDaoImpl extends ImplBase<NewsClass> implements NewsClassDao {
     public NewsClass GetModel(int id) {
       return   (NewsClass) sessionFactory.getCurrentSession().get(NewsClass.class,id);

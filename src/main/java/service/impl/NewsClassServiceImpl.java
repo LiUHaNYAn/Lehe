@@ -8,6 +8,7 @@ import domain.entity.NewsClass;
 import dtomodel.NewsClassAddDto;
 import dtomodel.NewsClassUpdateDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 import service.NewsClassService;
 
@@ -19,6 +20,7 @@ import java.util.Date;
 /**
  * Created by admin on 2016/3/30.
  */
+@Service
 public class NewsClassServiceImpl implements NewsClassService {
     @Autowired
     private NewsClassDao newsClassDao;
