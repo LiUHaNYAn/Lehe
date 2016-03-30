@@ -6,6 +6,7 @@ import dao.common.BindResult;
 import dao.common.BindResultTool;
 import domain.entity.NewsClass;
 import dtomodel.NewsClassAddDto;
+import dtomodel.NewsClassUpdateDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import service.NewsClassService;
@@ -41,8 +42,27 @@ public class NewsClassServiceImpl implements NewsClassService {
         return resultModel;
     }
 
-    public ResultModel UpdateNewsClass(NewsClass newsClass) {
-        return  null;
+    public ResultModel UpdateNewsClass(@Valid @NotNull NewsClassUpdateDto dto,BindingResult bindingResult) {
+        BindResult bindResult=BindResultTool.IsValid(bindingResult);
+        ResultModel resultModel=new ResultModel();
+        if(!bindResult.isvalid()) {
+            resultModel.setResultcode(-1);
+            resultModel.setMsg(bindResult.getMsg());
+            return resultModel;
+        }
+        NewsClass newsClass=newsClassDao.GetModel(dto.getClassid());
+        if(newsClass==null){
+            resultModel.setResultcode(-1);
+            resultModel.setMsg("不存在此编号");
+            return  resultModel;
+        }
+        newsClass.setIsdelete(dto.getIsdelete());
+        newsClass.setIshome(dto.getIshome());
+        newsClass.setName(dto.getName());
+        newsClass.setSortorder(dto.getSortorder());
+        newsClassDao.UpdateEntity(newsClass);
+        resultModel.setResultcode(1);
+        return  resultModel;
     }
 
     public ResultModel DeleteNewsClass(int newsclassid) {

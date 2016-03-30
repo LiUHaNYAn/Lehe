@@ -8,4 +8,5 @@ import domain.entity.NewsClass;
  */
 public interface NewsClassDao extends IDao<NewsClass> {
     public  void  UpdateIsDelete(int id);
+  public   NewsClass GetModel(int id);
 }

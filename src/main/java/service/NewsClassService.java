@@ -3,6 +3,7 @@ package service;
 import common.ResultModel;
 import domain.entity.NewsClass;
 import dtomodel.NewsClassAddDto;
+import dtomodel.NewsClassUpdateDto;
 import org.springframework.validation.BindingResult;
 
 import javax.transaction.Transactional;
@@ -16,7 +17,7 @@ public interface NewsClassService {
     @Transactional
     ResultModel AddNewsClass(@Valid @NotNull NewsClassAddDto newsClass, BindingResult result);
     @Transactional
-    ResultModel  UpdateNewsClass(NewsClass newsClass);
+    ResultModel  UpdateNewsClass(NewsClassUpdateDto newsClassUpdateDto,BindingResult result);
     @Transactional
     ResultModel  DeleteNewsClass(int newsclassid);
 }
