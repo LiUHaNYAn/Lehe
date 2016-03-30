@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import service.NewsClassService;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
@@ -70,5 +71,24 @@ public class NewsClassServiceImpl implements NewsClassService {
         resultModel.setResultcode(1);
         newsClassDao.UpdateIsDelete(newsclassid);
         return resultModel;
+    }
+
+    public ResultModel GetModel(@Min(value = 1,message = "请输入大于0的数字") int id,BindingResult bindingResult) {
+        BindResult bindResult=BindResultTool.IsValid(bindingResult);
+        ResultModel resultModel=new ResultModel();
+        if(!bindResult.isvalid()) {
+            resultModel.setResultcode(-1);
+            resultModel.setMsg(bindResult.getMsg());
+            return resultModel;
+        }
+        NewsClass newsClass=newsClassDao.GetModel(id);
+        if(newsClass==null){
+            resultModel.setResultcode(-1);
+            resultModel.setMsg("不存在此编号");
+            return  resultModel;
+        }
+        resultModel.setResultcode(1);
+        resultModel.setData(newsClass);
+        return  resultModel;
     }
 }
