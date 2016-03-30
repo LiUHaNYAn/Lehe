@@ -7,10 +7,13 @@ import dao.common.BindResultTool;
 import domain.entity.NewsClass;
 import dtomodel.NewsClassAddDto;
 import dtomodel.NewsClassUpdateDto;
+import org.hibernate.transform.ResultTransformer;
+import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 import service.NewsClassService;
+import viewmodel.NewsClassListViewModel;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
@@ -96,15 +99,16 @@ public class NewsClassServiceImpl implements NewsClassService {
     }
 
     public ResultModel GetList( int pageindex, int pagesize, String name,int language) {
-     List<NewsClass> newsclass=(List<NewsClass>)newsClassDao.Query("from domain.entity.NewsClass where (:name='' or name like :likename) and language=:language")
-             .setParameter("name",name)
-             .setParameter("likename","%"+name+"%")
-             .setParameter("language",language)
-             .setFirstResult((pageindex-1)*pagesize)
-             .setMaxResults(pageindex*pagesize).list();
+        List<NewsClassListViewModel> list=newsClassDao.GetList(pageindex,pagesize,name,language);
         ResultModel resultmodel=new ResultModel();
         resultmodel.setResultcode(1);
-        resultmodel.setData(newsclass);
+        if(list.size()==0){
+            resultmodel.setResultcode(-1);
+            resultmodel.setMsg("已经是最后一页");
+            return  resultmodel;
+        }
+
+        resultmodel.setData(list);
         return  resultmodel;
     }
 }

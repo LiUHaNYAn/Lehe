@@ -4,6 +4,7 @@ import common.ResultModel;
 import domain.entity.NewsClass;
 import dtomodel.NewsClassAddDto;
 import dtomodel.NewsClassQueryDto;
+import dtomodel.NewsClassUpdateDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -40,6 +41,11 @@ public class NewsClassController {
     @ResponseBody
     public ResultModel AddEntity(@Valid @NotNull NewsClassAddDto dto, BindingResult bindingResult){
         return  newsClassService.AddNewsClass(dto,bindingResult);
+    }
+    @RequestMapping(value = {"update"},method ={RequestMethod.POST})
+    @ResponseBody
+    public  ResultModel UpdateEntity(@Valid @NotNull NewsClassUpdateDto dto,BindingResult bindingResult){
+        return  newsClassService.UpdateNewsClass(dto,bindingResult);
     }
 
 }
