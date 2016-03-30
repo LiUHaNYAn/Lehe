@@ -1,5 +1,7 @@
 package controller;
 
+import common.ResultModel;
+import dtomodel.NewsClassQueryDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,9 +16,14 @@ import service.NewsClassService;
 public class NewsClassController {
 
     @Autowired
+
     private NewsClassService newsClassService;
     @RequestMapping(value = {"","index"})
     public ModelAndView Index(){
         return new ModelAndView("/newsclass/index");
+    }
+    @RequestMapping(value = {"list"})
+    public ResultModel ClassList(NewsClassQueryDto dto){
+        return  null;
     }
 }
