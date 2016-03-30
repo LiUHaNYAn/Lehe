@@ -28,7 +28,7 @@ public class NewsClassController {
     @RequestMapping(value = {"list"})
     @ResponseBody
     public ResultModel ClassList(NewsClassQueryDto dto){
-        ResultModel newsClasses= newsClassService.GetList(1,15,"");
+        ResultModel newsClasses= newsClassService.GetList(1,15,"d");
         return  newsClasses;
     }
 }
