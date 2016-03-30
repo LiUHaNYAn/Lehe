@@ -95,10 +95,11 @@ public class NewsClassServiceImpl implements NewsClassService {
         return  resultModel;
     }
 
-    public ResultModel GetList( int pageindex, int pagesize, String name) {
-     List<NewsClass> newsclass=(List<NewsClass>)newsClassDao.Query("from domain.entity.NewsClass where :name='' or name like :likename")
+    public ResultModel GetList( int pageindex, int pagesize, String name,int language) {
+     List<NewsClass> newsclass=(List<NewsClass>)newsClassDao.Query("from domain.entity.NewsClass where (:name='' or name like :likename) and language=:language")
              .setParameter("name",name)
              .setParameter("likename","%"+name+"%")
+             .setParameter("language",language)
              .setFirstResult((pageindex-1)*pagesize)
              .setMaxResults(pageindex*pagesize).list();
         ResultModel resultmodel=new ResultModel();

@@ -25,5 +25,5 @@ public interface NewsClassService {
     @Transactional
     public  ResultModel GetModel(int id,BindingResult bindingResult);
     @Transactional
-    public  ResultModel GetList(int pageindex,int pagesize,String classname);
+    public  ResultModel GetList(int pageindex,int pagesize,String classname,int lanauge);
 }

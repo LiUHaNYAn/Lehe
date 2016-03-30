@@ -4,6 +4,11 @@ package dtomodel;
  * Created by admin on 2016/3/30.
  */
 public class NewsClassQueryDto {
+    private String  name;
+    private int pagecount;
+    private  int language;
+    private  int pageindex;
+    private  int pagesize;
     public int getPageindex() {
         return pageindex;
     }
@@ -20,13 +25,7 @@ public class NewsClassQueryDto {
         this.pagesize = pagesize;
     }
 
-    public Object getData() {
-        return data;
-    }
 
-    public void setData(Object data) {
-        this.data = data;
-    }
 
     public int getPagecount() {
         return pagecount;
@@ -35,9 +34,22 @@ public class NewsClassQueryDto {
     public void setPagecount(int pagecount) {
         this.pagecount = pagecount;
     }
+    public int getLanguage() {
+        return language;
+    }
 
-    private  int pageindex;
-    private  int pagesize;
-    private Object data;
-    private int pagecount;
+    public void setLanguage(int language) {
+        this.language = language;
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
 }
