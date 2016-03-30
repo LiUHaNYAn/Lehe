@@ -8,4 +8,8 @@ import domain.entity.News;
  */
 public class NewsDaoImpl extends ImplBase<News> implements NewsDao  {
 
+    @Override
+    public News GetModel(int id) {
+        return  (News)sessionFactory.getCurrentSession().get(News.class,id);
+    }
 }

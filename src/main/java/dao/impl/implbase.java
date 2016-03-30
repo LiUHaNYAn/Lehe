@@ -1,6 +1,7 @@
 package dao.impl;
 
 import dao.core.IDao;
+import domain.core.IEntity;
 import org.hibernate.SessionFactory;
 import org.hibernate.type.Type;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +11,9 @@ import java.util.List;
 /**
  * Created by wanghy on 2016/3/29.
  */
-public abstract    class ImplBase<T> implements IDao<T> {
+public abstract    class ImplBase<T extends IEntity> implements IDao<T> {
     @Autowired
-    private SessionFactory sessionFactory;
+    protected SessionFactory sessionFactory;
 
     public void AddEntity(T entity) {
         sessionFactory.getCurrentSession().save(entity);
@@ -33,4 +34,5 @@ public abstract    class ImplBase<T> implements IDao<T> {
     public List<T> Pager(String hql, int pageindex, int pagesize) {
         return (List<T>)sessionFactory.getCurrentSession().createQuery(hql).setFirstResult(pagesize*(pageindex-1)+1).setMaxResults(pageindex*pagesize);
     }
+    public  abstract  T GetModel(int id);
 }

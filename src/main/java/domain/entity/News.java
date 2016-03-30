@@ -1,5 +1,6 @@
 package domain.entity;
 
+import domain.core.IEntity;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -9,7 +10,7 @@ import java.util.Date;
  * Created by wanghy on 2016/3/29.
  */
 @Entity(name = "tb_news")
-public class News {
+public class News implements IEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "newsid")
