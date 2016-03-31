@@ -23,7 +23,7 @@
         <thead><tr><td>编号</td><td>名称</td><td>发布时间</td><td>首页显示</td></tr></thead>
         {{each data as val i}}
             <tr><td>{{val.classid}}</td><td>{{val.name}}</td><td>{{val.createtime}}</td>
-                {{if val.ishome===1}}
+                {{if val.ishome==1}}
                 <td class="alert-danger" style="width:100px;">是 </td></tr>
                 {{else}}
                 <td class="alert-danger" style="width:100px;">否 </td></tr>
