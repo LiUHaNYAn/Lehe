@@ -16,25 +16,128 @@
     <link href="/statics/bootstrap-3.3.5/css/bootstrap-theme.css" type="text/css"  rel="stylesheet">
     <script src="/statics/js/jquery.min-1.10.js" type="text/javascript"></script>
     <script src="/statics/bootstrap-3.3.5/js/bootstrap.min.js" type="text/javascript"></script>
+    <link href="/statics/css/animate.min.css" rel="stylesheet">
+    <link href="/statics/css/style.min.css?v=3.2.0" rel="stylesheet">
 </head>
-<body>
+
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInUp">
+    <div class="row">
+        <div class="col-sm-12">
+
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>所有类别</h5>
+                    <div class="ibox-tools">
+                        <a href="projects.html" class="btn btn-primary btn-xs">创建新类别</a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="row m-b-sm m-t-sm">
+                        <div class="col-md-1">
+                            <button type="button" id="loading-example-btn" class="btn btn-white btn-sm"><i class="fa fa-refresh"></i> 刷新</button>
+                        </div>
+                        <div class="col-md-11">
+                            <form class="form-inline" id="condition">
+                                <div class="col-md-4">
+                                            <input type="hidden" name="pageindex" id="pageindex" value="1">
+                                            <input type="hidden" name="pagesize" id="pagesize" value="15">
+                                            <input type="hidden" name="language" id="language" value="1">
+                                        <div class="form-group">
+                                            <label for="name">标题</label>
+                                            <input name="name" type="text" class="form-control" id="name" placeholder="请输入标题">
+                                        </div>
+                                    </div>
+                                <div class="col-md-4">    <button type="button" class="btn btn-sm btn-primary"> 搜索</button></div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="project-list" id="container">
+
+                        <table class="table table-hover table-bordered">
+                            <thead>
+                            <tr>
+                                <td class="project-status">
+                                            <span class="label label-primary">编号</span>
+                                </td>
+                                <td class="project-title">
+                                    名称
+                                </td>
+                                <td class="project-completion">
+                                    创建时间
+                                </td>
+                                <td class="project-people">
+                                 首页显示
+                                </td>
+                                <td class="project-actions">
+                                    操作
+                                </td>
+                            </tr>
+                            </thead>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
 <script id="data-temp" type="text/html">
-    <table class="table table-stripped">
-        <thead><tr><td>编号</td><td>名称</td><td>发布时间</td><td>首页显示</td></tr></thead>
+    <table class="table table-hover table-bordered">
+        <thead>
+        <tr>
+            <td class="project-status">
+                <span class="label label-primary">编号</span>
+            </td>
+            <td class="project-title">
+                名称
+            </td>
+            <td class="project-completion">
+                创建时间
+            </td>
+            <td class="project-people">
+                首页显示
+            </td>
+            <td class="project-actions">
+                操作
+            </td>
+        </tr>
+        </thead>
+        <tbody>
         {{each data as val i}}
-            <tr><td>{{val.classid}}</td><td>{{val.name}}</td><td>{{val.createtime}}</td>
-                {{if val.ishome==1}}
-                <td class="alert-danger" style="width:100px;">是 </td></tr>
-                {{else}}
-                <td class="alert-danger" style="width:100px;">否 </td></tr>
-               {{/if}}
+        <tr>
+            <td class="project-status">
+                <span class="label label-primary">{{val.classid}}</span>
+            </td>
+            <td class="project-title">
+                {{val.name}}
+            </td>
+            <td class="project-completion">
+                {{val.createtime}}
+            </td>
+            {{if val.ishome==1}}
+            <td style="width:100px;">是 </td>
+            {{else}}
+            <td style="width:100px;">否 </td>
+            {{/if}}
+
+            <td class="project-actions">
+                <a href="projects.html#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> 查看 </a>
+                <a href="projects.html#" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> 编辑 </a>
+            </td>
+        </tr>
         {{/each}}
+        </tbody>
     </table>
+
 </script>
 <script>
     function loadData(){
         $.ajax({
-            url:"/newsclass/list?name=&pageindex=1&pagesize=15&language=1",
+            url:"/newsclass/list?"+$("#condition").serialize(),
             type:"get",
             success:function(data){
                 if(data.resultcode==1){
@@ -50,6 +153,4 @@
         loadData();
     })
 </script>
-<div id="container" class="container table-responsive"></div>
-</body>
 </html>
