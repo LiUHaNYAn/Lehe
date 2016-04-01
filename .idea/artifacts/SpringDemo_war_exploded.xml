@@ -58,7 +58,6 @@
           <element id="library" level="project" name="Maven: javax.transaction:jta:1.1" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.6.1" />
           <element id="library" level="project" name="Maven: org.hibernate.javax.persistence:hibernate-jpa-2.0-api:1.0.0.Final" />
-          <element id="library" level="project" name="Maven: org.quartz-scheduler:quartz-parent:2.2.2" />
           <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-dbcp:7.0.35" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.5.0" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.5.0" />
