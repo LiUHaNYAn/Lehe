@@ -35,9 +35,7 @@
                 </div>
                 <div class="ibox-content">
                     <div class="row m-b-sm m-t-sm">
-                        <div class="col-md-1">
-                            <button type="button" id="loading-example-btn" class="btn btn-white btn-sm"><i class="fa fa-refresh"></i> 刷新</button>
-                        </div>
+
                         <div class="col-md-11">
                             <form class="form-inline" id="condition">
                                 <div class="col-md-4">
@@ -49,7 +47,7 @@
                                             <input name="name" type="text" class="form-control" id="name" placeholder="请输入标题">
                                         </div>
                                     </div>
-                                <div class="col-md-4">    <button type="button" class="btn btn-sm btn-primary"> 搜索</button></div>
+                                <div class="col-md-4">    <button type="button" class="btn btn-sm btn-primary"  onclick=" loadData()"> 搜索</button></div>
                             </form>
                         </div>
                     </div>
@@ -89,6 +87,7 @@
     <table class="table table-hover table-bordered">
         <thead>
         <tr>
+
             <td class="project-status">
                 <span class="label label-primary">编号</span>
             </td>
@@ -144,7 +143,9 @@
                     var html=template("data-temp",data);
                     $("#container").html(html);
                 }else{
-                    alert(data.msg);
+                    $('#myModal').modal({
+                        show: true,
+                    })
                 }
             }
         });
@@ -153,4 +154,36 @@
         loadData();
     })
 </script>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">提示信息</h4>
+            </div>
+            <div class="modal-body">
+               操作成功
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="errorModel" tabindex="-1" role="dialog" aria-labelledby="errorModelLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="errorModelLabel">提示信息</h4>
+            </div>
+            <div class="modal-body">
+                操作失败
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
 </html>
