@@ -19,7 +19,7 @@ public class NewsClassDaoImpl extends ImplBase<NewsClass> implements NewsClassDa
     }
 
     public List<NewsClassListViewModel> GetList(int pageindex, int pagesize, String name, int language) {
-     return (List<NewsClassListViewModel>)sessionFactory.getCurrentSession().createSQLQuery("select  classname, createtime,ishome,classid from tb_NewsClass as newsclass where (:name='' or newsclass.classname like :likename) and newsclass.language=:language")
+     return (List<NewsClassListViewModel>)sessionFactory.getCurrentSession().createSQLQuery("select  classname, createtime,ishome,classid from tb_NewsClass as newsclass where (:name='' or newsclass.classname like :likename) and newsclass.language=:language ORDER  by classid DESC ")
                 .setParameter("name",name)
                 .setParameter("likename","%"+name+"%")
                 .setParameter("language",language)

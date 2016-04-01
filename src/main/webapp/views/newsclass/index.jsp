@@ -18,6 +18,8 @@
     <script src="/statics/bootstrap-3.3.5/js/bootstrap.min.js" type="text/javascript"></script>
     <link href="/statics/css/animate.min.css" rel="stylesheet">
     <link href="/statics/css/style.min.css?v=3.2.0" rel="stylesheet">
+
+    <script src="/statics/js/jquery.validate.min.js" type="text/javascript"></script>
 </head>
 
 
@@ -30,7 +32,9 @@
                 <div class="ibox-title">
                     <h5>所有类别</h5>
                     <div class="ibox-tools">
-                        <a href="projects.html" class="btn btn-primary btn-xs">创建新类别</a>
+                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addModel">
+                            创建新类别
+                        </button>
                     </div>
                 </div>
                 <div class="ibox-content">
@@ -150,6 +154,62 @@
             }
         });
     }
+    function postdata(){
+        var name=$("#addname").val();
+        var sortorder=$("#addsort").val();
+        var ishome=$("#add_ishome").val();
+       var validator= $("#form1").validate({
+           rules:{
+               addname:{
+                   required:true,
+                   rangelength:[2,20]
+               },
+               addsort:{
+                   required:true,
+                   range:[0,9999]
+               },
+               add_ishome:{
+                   required:true,
+                   range:[0,1]
+               }
+           },
+           messages:{
+               addname:{
+                   required:"请输入标题",
+                   rangelength:"长度范围是{0}-{1}"
+               },
+               addsort:{
+                   required:"请输入排序",
+                   range:"排序范围是{0}-{1}"
+               },
+               add_ishome:{
+                   required:"请选择是否首页显示",
+                   range:"是否首页显示1显示0不显示"
+               }
+           }
+       });
+        if(!validator.form()){
+            return;
+        }
+
+        $.ajax({
+            type:"post",
+            url:"/newsclass/add",
+            data:{"name":name,sortorder:sortorder,ishome:ishome,language:1},
+            success:function(data){
+                if(data.resultcode==1){
+                    $("#form1 input").val("");
+
+                    $("#addModel").modal("hide");
+                    $("#myModal").modal("show");
+                    loadData();
+                }else{
+                    $("#errorModel").modal("show");
+                }
+
+            }
+        });
+    }
     $(function(){
         loadData();
     })
@@ -182,6 +242,47 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="addModel" tabindex="-1" role="dialog" aria-labelledby="addModelLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="addModellLabel">添加类别信息</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" id="form1">
+                    <div class="form-group">
+                        <label for="addname" class="col-sm-2 control-label">类别名称</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="addname" id="addname" placeholder="请输入标题">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="addsort" class="col-sm-2 control-label">排序</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="addsort" id="addsort" placeholder="0" value="0">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="add_ishome" class="col-sm-2 control-label">首页显示</label>
+                        <div class="col-sm-10">
+                            <select  type="password" class="form-control" name="add_ishome" id="add_ishome" >
+                                <option value="1">是</option>
+                                <option value="0">否</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" onclick="postdata()">提交</button>
             </div>
         </div>
     </div>
