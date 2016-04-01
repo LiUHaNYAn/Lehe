@@ -287,4 +287,11 @@
         </div>
     </div>
 </div>
+<script src="/statics/js/content.min.js?v=1.0.0"></script>
+
+
+<script>
+    $(document).ready(function(){$("#loading-example-btn").click(function(){btn=$(this);simpleLoad(btn,true);simpleLoad(btn,false)})});function simpleLoad(a,b){if(b){a.children().addClass("fa-spin");a.contents().last().replaceWith(" Loading")}else{setTimeout(function(){a.children().removeClass("fa-spin");a.contents().last().replaceWith(" Refresh")},2000)}};
+</script>
+
 </html>
