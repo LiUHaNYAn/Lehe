@@ -2,6 +2,7 @@ package service.impl;
 
 import dao.UserAccountDao;
 import domain.entity.UserAccount;
+import dtomodel.LoginDto;
 import dtomodel.RegisterDto;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -11,6 +12,7 @@ import service.UserAccountService;
 import viewmodel.UserInfoViewModel;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -44,5 +46,9 @@ public class UserAccountServiceImpl implements UserAccountService {
 //        }
 //        logger.info(String.format("编号为%d的用户存在",id));
         return userInfoViewModel;
+    }
+
+    public UserInfoViewModel Login(@NotNull @Valid LoginDto dto) {
+        return  null;
     }
 }

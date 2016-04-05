@@ -1,5 +1,6 @@
 package service;
 
+import dtomodel.LoginDto;
 import dtomodel.RegisterDto;
 import org.hibernate.bytecode.spi.NotInstrumentedException;
 import org.springframework.transaction.annotation.Propagation;
@@ -17,4 +18,5 @@ import javax.validation.constraints.NotNull;
 public interface UserAccountService {
     public  void  Register(@Valid @NotNull RegisterDto userAccount) throws Exception;
     public UserInfoViewModel GetModel(@Min(value = 1L,message = "请输入一个大于0的整数") int id);
+    public  UserInfoViewModel Login(@NotNull @Valid LoginDto dto );
 }
