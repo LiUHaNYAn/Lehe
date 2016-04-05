@@ -63,6 +63,9 @@
                 <value>domain.entity.UserAccount</value>
                 <value>domain.entity.NewsClass</value>
                 <value>domain.entity.News</value>
+                <value>domain.entity.ManagerGroup</value>
+                <value>domain.entity.Manager</value>
+                <value>domain.entity.Module</value>
             </list>
         </property>
         <property name="hibernateProperties">
