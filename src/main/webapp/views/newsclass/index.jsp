@@ -184,7 +184,7 @@
         loadData();
     }
     function redirectPage(){
-        var reg="^\d[0-9]*$";
+        var reg="^\d{1,4}$";
         var regex = new RegExp(reg);
         var num=$("#pagenum").val();
         if(!regex.test(num)){
