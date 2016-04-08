@@ -27,6 +27,13 @@ public class NewsClassDaoImpl extends ImplBase<NewsClass> implements NewsClassDa
                 .setMaxResults(pageindex*pagesize).setResultTransformer(Transformers.aliasToBean(NewsClassListViewModel.class)).list();
     }
 
+    public int GetCount(String name, int language) {
+        return ((Number)(sessionFactory.getCurrentSession().createSQLQuery("select  count(*)  from tb_NewsClass as newsclass where (:name='' or newsclass.classname like :likename) and newsclass.language=:language ORDER  by classid DESC ")
+                .setParameter("name",name)
+                .setParameter("likename","%"+name+"%")
+                .setParameter("language",language)).uniqueResult()).intValue();
+    }
+
     public void UpdateIsDelete(int id) {
         sessionFactory.getCurrentSession().createQuery("update NewsClass newsclass set newsclass.isdelete=1 where  newsclass.classid=:id").setParameter("id",id);
     }

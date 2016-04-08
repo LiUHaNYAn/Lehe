@@ -81,7 +81,26 @@
 
                         </table>
                     </div>
+                    <div class="row  m-b-sm m-t-sm" style="margin: 0 auto; text-align: center">
+                    <button class="btn btn-white btn-sm">
+                        <i class="fa fa-arrow-left">第一页</i>
+                    </button>
+                    <button class="btn btn-white btn-sm">
+                        <i class="fa fa-arrow-left">上一页</i>
+                    </button>
+                    <button class="btn btn-white btn-sm">
+                        <i class="fa fa-arrow-right">下一页</i>
+                    </button>
+                    <button class="btn btn-white btn-sm">
+                        <i class="fa fa-arrow-left">最后一页</i>
+                    </button>
+                    <input type="text" value="1" name="pagenum" id="pagenum" style="width: 30px;">
+                    <button class="btn btn-white btn-sm">
+                        <i class="fa fa-arrow-left">跳转</i>
+                    </button>
                 </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -92,19 +111,22 @@
         <thead>
         <tr>
 
-            <td class="project-status">
-                <span class="label label-primary">编号</span>
+            <td class="project-status" style="width:2%;">
+                <span>
+
+   <input type="checkbox" name="chkall" id="chkall" onclick="checkAll(this)">
+                </span>
             </td>
-            <td class="project-title">
+            <td class="project-title"  style="width:30%;">
                 名称
             </td>
-            <td class="project-completion">
+            <td class="project-completion"  style="width:15%;">
                 创建时间
             </td>
-            <td class="project-people">
+            <td class="project-people"  style="width:10%;">
                 首页显示
             </td>
-            <td class="project-actions">
+            <td class="project-actions"  style="width:20%;">
                 操作
             </td>
         </tr>
@@ -113,7 +135,7 @@
         {{each data as val i}}
         <tr>
             <td class="project-status">
-                <span class="label label-primary">{{val.classid}}</span>
+                <span><input type="checkbox" name="chk_{{val.classid}}" id="chk_{{val.classid}}" value="{{val.classid}}" onclick="checkSingleClick({{val.classid}})"></span>
             </td>
             <td class="project-title">
                 {{val.name}}
@@ -138,13 +160,17 @@
 
 </script>
 <script>
+    function firstPage(){
+        $("#pageindex").val(1);
+        loadData();
+    }
     function loadData(){
         $.ajax({
             url:"/newsclass/list?"+$("#condition").serialize(),
             type:"get",
             success:function(data){
                 if(data.resultcode==1){
-                    var html=template("data-temp",data);
+                    var html=template("data-temp",data.data);
                     $("#container").html(html);
                 }else{
                     $('#myModal').modal({
@@ -153,6 +179,25 @@
                 }
             }
         });
+    }
+    function checkAll(control){
+        if($(control).prop("checked")==true){
+            $("input:checkbox[name^='chk_']").prop("checked",true);
+        }else{
+
+            $("input:checkbox[name^='chk_']").prop("checked",false);
+        }
+    }
+    function checkSingleClick(id){
+       if($("#chk_"+id).prop("checked")){
+           var total=   $("input:checkbox[name^='chk_']").length;
+           var selectedcount= $("input:checkbox[name^='chk_']:checked").length;
+           if(total==selectedcount){
+               $("#chkall").prop("checked",true);
+           }
+       }else{
+           $("#chkall").prop("checked",false);
+       }
     }
     function postdata(){
         var name=$("#addname").val();

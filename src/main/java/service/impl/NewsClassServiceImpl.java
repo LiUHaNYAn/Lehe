@@ -1,6 +1,7 @@
 package service.impl;
 
 import common.ResultModel;
+import common.Tool;
 import dao.NewsClassDao;
 import dao.common.BindResult;
 import dao.common.BindResultTool;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 import service.NewsClassService;
 import viewmodel.NewsClassListViewModel;
+import viewmodel.PagerModel;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
@@ -100,15 +102,15 @@ public class NewsClassServiceImpl implements NewsClassService {
 
     public ResultModel GetList( int pageindex, int pagesize, String name,int language) {
         List<NewsClassListViewModel> list=newsClassDao.GetList(pageindex,pagesize,name,language);
+        int count=newsClassDao.GetCount(name,language);
+        int totalpage= Tool.GetPageCount(count,pagesize);
+        PagerModel pagerModel=new PagerModel();
+        pagerModel.setData(list);
+        pagerModel.setPagecount(totalpage);
+        pagerModel.setTotalcount(count);
         ResultModel resultmodel=new ResultModel();
         resultmodel.setResultcode(1);
-        if(list.size()==0){
-            resultmodel.setResultcode(-1);
-            resultmodel.setMsg("已经是最后一页");
-            return  resultmodel;
-        }
-
-        resultmodel.setData(list);
+        resultmodel.setData(pagerModel);
         return  resultmodel;
     }
 }
