@@ -81,24 +81,7 @@
 
                         </table>
                     </div>
-                    <div class="row  m-b-sm m-t-sm" style="margin: 0 auto; text-align: center">
-                    <button class="btn btn-white btn-sm">
-                        <i class="fa fa-arrow-left">第一页</i>
-                    </button>
-                    <button class="btn btn-white btn-sm">
-                        <i class="fa fa-arrow-left">上一页</i>
-                    </button>
-                    <button class="btn btn-white btn-sm">
-                        <i class="fa fa-arrow-right">下一页</i>
-                    </button>
-                    <button class="btn btn-white btn-sm">
-                        <i class="fa fa-arrow-left">最后一页</i>
-                    </button>
-                    <input type="text" value="1" name="pagenum" id="pagenum" style="width: 30px;">
-                    <button class="btn btn-white btn-sm">
-                        <i class="fa fa-arrow-left">跳转</i>
-                    </button>
-                </div>
+
                 </div>
 
             </div>
@@ -157,12 +140,57 @@
         {{/each}}
         </tbody>
     </table>
+    <div class="row  m-b-sm m-t-sm" style="margin: 0 auto; text-align: center">
+        {{if currentPage!=1}}
+        <button class="btn btn-white btn-sm" onclick="firstPage()">
+            <i class="fa fa-arrow-left">第一页</i>
+        </button>
 
+        <button class="btn btn-white btn-sm" onclick=" prePage()">
+            <i class="fa fa-arrow-left">上一页</i>
+        </button>
+        {{/if}}
+        {{if currentPage!=pagecount}}
+        <button class="btn btn-white btn-sm" onclick="nextPage()">
+            <i class="fa fa-arrow-right" >下一页</i>
+        </button>
+
+        <button class="btn btn-white btn-sm" onclick="lastPage()">
+            <i class="fa fa-arrow-left">最后一页</i>
+        </button>
+        {{/if}}
+        <span>当前第<span id="currentpage">{{currentPage}}</span>页&nbsp;&nbsp;共<span id="totalpage">{{pagecount}}</span>页</span>
+        <input type="text" value="1" name="pagenum" id="pagenum" style="width: 30px;" onkeyup="value=value.replace(/[^\d]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" >
+        <button class="btn btn-white btn-sm" onclick="redirectPage()">
+            <i class="fa fa-arrow-left">跳转</i>
+        </button>
+    </div>
 </script>
 <script>
     function firstPage(){
         $("#pageindex").val(1);
         loadData();
+    }
+    function lastPage(){
+        $("#pageindex").val($("#totalpage").html());
+        loadData();
+    }
+    function nextPage(){
+        $("#pageindex").val(parseInt($("#currentpage").html())+1);
+        loadData();
+    }
+    function prePage(){
+        $("#pageindex").val(parseInt($("#currentpage").html())-1);
+        loadData();
+    }
+    function redirectPage(){
+        var reg="^\d[0-9]*$";
+        var regex = new RegExp(reg);
+        var num=$("#pagenum").val();
+        if(!regex.test(num)){
+            alert("请输入数字,数字范围是1-9999");
+        }
+
     }
     function loadData(){
         $.ajax({

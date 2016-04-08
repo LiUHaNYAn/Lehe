@@ -105,6 +105,7 @@ public class NewsClassServiceImpl implements NewsClassService {
         int count=newsClassDao.GetCount(name,language);
         int totalpage= Tool.GetPageCount(count,pagesize);
         PagerModel pagerModel=new PagerModel();
+        pagerModel.setCurrentPage(pageindex);
         pagerModel.setData(list);
         pagerModel.setPagecount(totalpage);
         pagerModel.setTotalcount(count);
