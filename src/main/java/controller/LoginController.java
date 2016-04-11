@@ -1,11 +1,8 @@
 package controller;
 
 import common.ResultModel;
-import domain.entity.UserAccount;
 import dtomodel.LoginDto;
-import org.hibernate.mapping.Index;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -24,12 +21,12 @@ public class LoginController {
     private UserAccountService userAccountService;
     @RequestMapping(value={"/login/index","/login"})
     public ModelAndView Index(){
-        return  new ModelAndView("/Index");
+        return  new ModelAndView("login/index");
     }
     @RequestMapping("/login/login")
     @ResponseBody
     public ResultModel Login(@Valid @NotNull LoginDto dto){
         userAccountService.Login(dto);
-        return  null;
+        return  new ResultModel();
     }
 }

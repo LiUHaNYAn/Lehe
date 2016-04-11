@@ -23,7 +23,7 @@ public class UserAccountController {
     private UserAccountService userAccountService;
     @RequestMapping(value = {"","index"})
     public ModelAndView Index(){
-        return  new ModelAndView("index");
+        return  new ModelAndView("login/index");
     }
     @RequestMapping(value = {"/user/{id}"})
     @ResponseBody
