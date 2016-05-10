@@ -160,10 +160,6 @@
         </button>
         {{/if}}
         <span>当前第<span id="currentpage">{{currentPage}}</span>页&nbsp;&nbsp;共<span id="totalpage">{{pagecount}}</span>页</span>
-        <%--<input type="text" value="1" name="pagenum" id="pagenum" style="width: 30px;" onkeyup="value=value.replace(/[^\d]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" >--%>
-        <%--<button class="btn btn-white btn-sm" onclick="redirectPage()">--%>
-            <%--<i class="fa fa-arrow-left">跳转</i>--%>
-        <%--</button>--%>
     </div>
 </script>
 <script>
